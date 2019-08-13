@@ -1,0 +1,484 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        html, body, #map {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/ky120rfd_0.js"></script>
+        <script src="data/WELville_1.js"></script>
+        <script src="data/Slville_2.js"></script>
+        <script src="data/ELville_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[34.99536717474334,-95.80040572291477],[42.8072261082628,-83.48969845209459]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="http://leafletjs.com" title="A JS library for interactive maps">Leaflet</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        function pop_ky120rfd_0(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['state_fips'] !== null ? Autolinker.link(String(feature.properties['state_fips'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['county_fip'] !== null ? Autolinker.link(String(feature.properties['county_fip'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['county_gni'] !== null ? Autolinker.link(String(feature.properties['county_gni'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['aff_geo_co'] !== null ? Autolinker.link(String(feature.properties['aff_geo_co'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['geo_id'] !== null ? Autolinker.link(String(feature.properties['geo_id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <th scope="row">county_nam</th>\
+                        <td>' + (feature.properties['county_nam'] !== null ? Autolinker.link(String(feature.properties['county_nam'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['legal_area'] !== null ? Autolinker.link(String(feature.properties['legal_area'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['area_land_'] !== null ? Autolinker.link(String(feature.properties['area_land_'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['area_water'] !== null ? Autolinker.link(String(feature.properties['area_water'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2"><strong>Region</strong><br />' + (feature.properties['Region'] !== null ? Autolinker.link(String(feature.properties['Region'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ky120rfd_0_0(feature) {
+            switch(String(feature.properties['Region'])) {
+                case 'BG':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(239,111,76,1.0)',
+            }
+                    break;
+                case 'East Louisville':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(205,192,96,1.0)',
+            }
+                    break;
+                case 'EKY':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(122,91,223,1.0)',
+            }
+                    break;
+                case 'Lex':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(107,200,191,1.0)',
+            }
+                    break;
+                case 'NKY':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(203,91,141,1.0)',
+            }
+                    break;
+                case 'Owen':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(98,159,238,1.0)',
+            }
+                    break;
+                case 'West Louisville':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(184,56,201,1.0)',
+            }
+                    break;
+                case 'WKY':
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(30,205,71,1.0)',
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_ky120rfd_0',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(148,215,93,1.0)',
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_ky120rfd_0');
+        map.getPane('pane_ky120rfd_0').style.zIndex = 400;
+        map.getPane('pane_ky120rfd_0').style['mix-blend-mode'] = 'normal';
+        var layer_ky120rfd_0 = new L.geoJson(json_ky120rfd_0, {
+            attribution: '',
+            pane: 'pane_ky120rfd_0',
+            onEachFeature: pop_ky120rfd_0,
+            style: style_ky120rfd_0_0,
+        });
+        bounds_group.addLayer(layer_ky120rfd_0);
+        map.addLayer(layer_ky120rfd_0);
+        function pop_WELville_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMode'] !== null ? Autolinker.link(String(feature.properties['altitudeMode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['van_precin'] !== null ? Autolinker.link(String(feature.properties['van_precin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['region_nam'] !== null ? Autolinker.link(String(feature.properties['region_nam'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fo_name'] !== null ? Autolinker.link(String(feature.properties['fo_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['team_name'] !== null ? Autolinker.link(String(feature.properties['team_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['county'] !== null ? Autolinker.link(String(feature.properties['county'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pct_name'] !== null ? Autolinker.link(String(feature.properties['pct_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['national_p'] !== null ? Autolinker.link(String(feature.properties['national_p'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_WELville_1_0() {
+            return {
+                pane: 'pane_WELville_1',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,180,60,1.0)',
+            }
+        }
+        map.createPane('pane_WELville_1');
+        map.getPane('pane_WELville_1').style.zIndex = 401;
+        map.getPane('pane_WELville_1').style['mix-blend-mode'] = 'normal';
+        var layer_WELville_1 = new L.geoJson(json_WELville_1, {
+            attribution: '',
+            pane: 'pane_WELville_1',
+            onEachFeature: pop_WELville_1,
+            style: style_WELville_1_0,
+        });
+        bounds_group.addLayer(layer_WELville_1);
+        map.addLayer(layer_WELville_1);
+        function pop_Slville_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMode'] !== null ? Autolinker.link(String(feature.properties['altitudeMode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['van_precin'] !== null ? Autolinker.link(String(feature.properties['van_precin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['region_nam'] !== null ? Autolinker.link(String(feature.properties['region_nam'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fo_name'] !== null ? Autolinker.link(String(feature.properties['fo_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['team_name'] !== null ? Autolinker.link(String(feature.properties['team_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['county'] !== null ? Autolinker.link(String(feature.properties['county'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pct_name'] !== null ? Autolinker.link(String(feature.properties['pct_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['national_p'] !== null ? Autolinker.link(String(feature.properties['national_p'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Slville_2_0() {
+            return {
+                pane: 'pane_Slville_2',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(114,155,111,1.0)',
+            }
+        }
+        map.createPane('pane_Slville_2');
+        map.getPane('pane_Slville_2').style.zIndex = 402;
+        map.getPane('pane_Slville_2').style['mix-blend-mode'] = 'normal';
+        var layer_Slville_2 = new L.geoJson(json_Slville_2, {
+            attribution: '',
+            pane: 'pane_Slville_2',
+            onEachFeature: pop_Slville_2,
+            style: style_Slville_2_0,
+        });
+        bounds_group.addLayer(layer_Slville_2);
+        map.addLayer(layer_Slville_2);
+        function pop_ELville_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Name'] !== null ? Autolinker.link(String(feature.properties['Name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['description'] !== null ? Autolinker.link(String(feature.properties['description'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['timestamp'] !== null ? Autolinker.link(String(feature.properties['timestamp'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['begin'] !== null ? Autolinker.link(String(feature.properties['begin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['end'] !== null ? Autolinker.link(String(feature.properties['end'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['altitudeMode'] !== null ? Autolinker.link(String(feature.properties['altitudeMode'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['tessellate'] !== null ? Autolinker.link(String(feature.properties['tessellate'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['extrude'] !== null ? Autolinker.link(String(feature.properties['extrude'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['visibility'] !== null ? Autolinker.link(String(feature.properties['visibility'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['drawOrder'] !== null ? Autolinker.link(String(feature.properties['drawOrder'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['icon'] !== null ? Autolinker.link(String(feature.properties['icon'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['van_precin'] !== null ? Autolinker.link(String(feature.properties['van_precin'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['region_nam'] !== null ? Autolinker.link(String(feature.properties['region_nam'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fo_name'] !== null ? Autolinker.link(String(feature.properties['fo_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['team_name'] !== null ? Autolinker.link(String(feature.properties['team_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['county'] !== null ? Autolinker.link(String(feature.properties['county'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['pct_name'] !== null ? Autolinker.link(String(feature.properties['pct_name'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['national_p'] !== null ? Autolinker.link(String(feature.properties['national_p'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ELville_3_0() {
+            return {
+                pane: 'pane_ELville_3',
+                opacity: 1,
+                color: 'rgba(35,35,35,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1.0, 
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(243,166,178,1.0)',
+            }
+        }
+        map.createPane('pane_ELville_3');
+        map.getPane('pane_ELville_3').style.zIndex = 403;
+        map.getPane('pane_ELville_3').style['mix-blend-mode'] = 'normal';
+        var layer_ELville_3 = new L.geoJson(json_ELville_3, {
+            attribution: '',
+            pane: 'pane_ELville_3',
+            onEachFeature: pop_ELville_3,
+            style: style_ELville_3_0,
+        });
+        bounds_group.addLayer(layer_ELville_3);
+        map.addLayer(layer_ELville_3);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/ELville_3.png" /> ELville': layer_ELville_3,'<img src="legend/Slville_2.png" /> Slville': layer_Slville_2,'<img src="legend/WELville_1.png" /> WELville': layer_WELville_1,'ky120rfd<br /><table><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_BG0.png" /></td><td>BG</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_EastLouisville1.png" /></td><td>East Louisville</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_EKY2.png" /></td><td>EKY</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_Lex3.png" /></td><td>Lex</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_NKY4.png" /></td><td>NKY</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_Owen5.png" /></td><td>Owen</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_WestLouisville6.png" /></td><td>West Louisville</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_WKY7.png" /></td><td>WKY</td></tr><tr><td style="text-align: center;"><img src="legend/ky120rfd_0_8.png" /></td><td></td></tr></table>': layer_ky120rfd_0,}).addTo(map);
+        setBounds();
+        </script>
+    </body>
+</html>
