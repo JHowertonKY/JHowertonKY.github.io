@@ -129,6 +129,8 @@
         });
         bounds_group.addLayer(layer_County_1);
         map.addLayer(layer_County_1);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'<img src="legend/County_1.png" /> County': layer_County_1,'<img src="legend/Precincts_0.png" /> Precincts': layer_Precincts_0,}).addTo(map);
         setBounds();
         </script>
     </body>
